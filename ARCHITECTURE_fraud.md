@@ -105,7 +105,7 @@ A production-oriented, leakage-controlled ML pipeline for detecting financial fr
 
 | Column | Why Excluded |
 |--------|-------------|
-| `isFlaggedFraud` | Direct label leak — system flag set after fraud confirmed |
+| `isFlaggedFraud` | Direct label leak - system flag set after fraud confirmed |
 | `nameOrig` | No predictive signal, privacy risk |
 | `nameDest` | No predictive signal, privacy risk |
 | `oldBalanceOrg` | Used only for time-based split logic, not available at real-time prediction |
@@ -118,10 +118,10 @@ A production-oriented, leakage-controlled ML pipeline for detecting financial fr
 
 | Approach | Decision |
 |----------|----------|
-| Oversampling (SMOTE) | Not used — risk of leakage if applied before split |
-| Undersampling | Not used — loses legitimate transaction information |
-| `class_weight="balanced"` | ✅ Used — penalises misclassification of minority class proportionally |
-| PR-AUC as metric | ✅ Used — accuracy is misleading at 0.13% fraud rate |
+| Oversampling (SMOTE) | Not used - risk of leakage if applied before split |
+| Undersampling | Not used - loses legitimate transaction information |
+| `class_weight="balanced"` | ✅ Used - penalises misclassification of minority class proportionally |
+| PR-AUC as metric | ✅ Used - accuracy is misleading at 0.13% fraud rate |
 
 ---
 
@@ -135,7 +135,7 @@ A production-oriented, leakage-controlled ML pipeline for detecting financial fr
 Random Forest chosen as final model for:
 - Higher PR-AUC (0.999 vs 0.980)
 - Native feature importance scores for compliance explainability
-- No scaling requirement — simpler production deployment
+- No scaling requirement - simpler production deployment
 - Robust to outliers in amount distribution
 
 ---
@@ -151,14 +151,14 @@ Features were engineered in 4 deliberate categories to capture different fraud s
 | Interaction features | High-risk type+amount combinations |
 | Signal amplification | Composite flags for strongest combined signals |
 
-This design makes the model **defensible to compliance teams** — each feature has a clear business rationale.
+This design makes the model **defensible to compliance teams** - each feature has a clear business rationale.
 
 ---
 
 ## Production Considerations
 
-- **Modular pipeline** — each step independently runnable and auditable
-- **No data leakage** — explicitly excluded columns unavailable at prediction time
-- **Stratified split** — fraud rate preserved across train/test
-- **Explainable outputs** — feature importances exportable for regulatory review
-- **Scalable** — designed for 6.3M+ transaction volume
+- **Modular pipeline** - each step independently runnable and auditable
+- **No data leakage** - explicitly excluded columns unavailable at prediction time
+- **Stratified split** - fraud rate preserved across train/test
+- **Explainable outputs** - feature importances exportable for regulatory review
+- **Scalable** - designed for 6.3M+ transaction volume
