@@ -104,16 +104,6 @@ The following columns were explicitly excluded from features:
 
 ---
 
-## Visualisations
-
-### PR-AUC Curve + Confusion Matrix
-![Fraud Model Evaluation](outputs/fraud_model_evaluation.png)
-
-### Top 15 Feature Importances
-![Feature Importance](outputs/fraud_feature_importance.png)
-
----
-
 ## Tech Stack
 
 | Tool | Purpose |
